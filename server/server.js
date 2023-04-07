@@ -4,13 +4,18 @@
 const path = require('path');
 const express = require("express");
 const cors = require("cors");
-// const db = require('./db');
+require('dotenv').config()
 
+const spotifyController = require('./controllers/spotifyController')
 
-const  app = express();
+const app = express();
 const port = 3000;
 
+app.get('/login', spotifyController.getApprove);
 
+app.get('/spotify', spotifyController.checkApprove, spotifyController.getToken, (req, res) => { 
+  
+})
 
 
 app.use(cors());
@@ -21,17 +26,6 @@ app.use(express.static(path.resolve(__dirname, '../dist')));
 app.use(express.json());
 
 
-
-// test firebase
-// app.get('/testFirebase', async (req, res) =>{
-//   const userAdded = await db.collection('users').add({
-//     name: 'test3',
-//     biography: 'test 3 bio',
-//     instagramLink: 'test3sLink',
-//     phoneNumber: 123456789
-//   })
-//   return res.send(200).json(userAdded);
-// })
 
 
 
@@ -56,4 +50,4 @@ app.use((err, req, res, next) => {
 
 
 
-module.exports = app.listen(port,  () => console.log("Example app listening on port 3000!"));
+module.exports = app.listen(port,  () => console.log("Vibez listening on port 3000!"));

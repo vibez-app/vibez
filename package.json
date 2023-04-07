@@ -54,7 +54,10 @@
   "dependencies": {
     "cors": "^2.8.5",
     "css-loader": "^6.7.3",
+    "dotenv": "^16.0.3",
+    "node-fetch": "^2.6.9",
     "postcss-loader": "^7.2.4",
+    "randomstring": "^1.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.10.0",
