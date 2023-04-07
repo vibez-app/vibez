@@ -3,6 +3,7 @@ module.exports = {
   theme: {
       extend: {
           colors: {
+            teal: '#429E9D'
           },
       },
   },
