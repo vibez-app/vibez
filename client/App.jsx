@@ -1,13 +1,26 @@
-import React from "react";
+import React from 'react';
 import './app.css';
 // import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import axios from 'axios';
+
+const api = axios.create({
+	baseURL: 'http://localhost:3000/',
+});
+
+const handler = () => {
+	api.get('/user').then((res) => console.log(res.data));
+};
 
 function App() {
-    return (
-        <h1>
-            It is indeed a vibe
-        </h1>
-    )
+	return (
+		<div>
+			<h1>It is indeed a vibe</h1>
+
+			<button type="button" onClick={handler} className="bg-gray-500">
+				CLICK ME
+			</button>
+		</div>
+	);
 }
 
-export default App
+export default App;
