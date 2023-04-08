@@ -7,7 +7,6 @@ import Login from '../components/LoginPage/Login';
 function MainContainer() {
     return (
         <div className='mainContainer'>
-            <Login/>
             <NavBar/>
             <Visualizer/>
 
