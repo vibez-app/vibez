@@ -3,12 +3,12 @@ import MoodOrb from './MoodOrb';
 
 function Visualizer() {
     return (
-        <div className="orbVisualizer">
-            <div>
-             /Visualizer 
+        <div className="orbContainer">
+            <div className='backButton'>backButton</div>
+            <div className='orbVisualizer'>
             <MoodOrb/>
-            Visualizer/
             </div>
+            <div className='nextButton'>nextButton</div>
         </div>
     );
 }
