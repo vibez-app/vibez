@@ -11,6 +11,7 @@ require('dotenv').config();
 const spotifyController = require('./controllers/spotifyController');
 const userController = require('./controllers/userController');
 const tokenController = require('./controllers/tokenController');
+const trackController = require('./controllers/trackController');
 
 mongoose
 	.connect(process.env.MONGO_URL, {
@@ -46,6 +47,18 @@ app.get(
 	tokenController.refreshToken,
 	(req, res) => {
 		res.status(200).json({ user: res.locals.user });
+	}
+);
+
+app.get(
+	'/day',
+	userController.getUser,
+	tokenController.refreshToken,
+	trackController.getTracks,
+	trackController.getTrackFeatures,
+	userController.addDay,
+	(req, res) => {
+		res.status(200).json(res.locals.user);
 	}
 );
 

@@ -8,7 +8,13 @@ const api = axios.create({
 });
 
 const handler = () => {
-	api.get('/user').then((res) => console.log(res.data));
+	api
+		.get('/day', {
+			params: {
+				date: '2023-04-08',
+			},
+		})
+		.then((res) => console.log(res.data));
 };
 
 function App() {
