@@ -57,6 +57,7 @@ userController.addDay = async (req, res, next) => {
 			const trackObj = {};
 			trackObj.id = tracksInfo[i].track.id;
 			trackObj.name = tracksInfo[i].track.name;
+			trackObj.playedAt = tracksInfo[i].played_at;
 			trackObj.energy = tracksFeatures[i].energy;
 			trackObj.valence = tracksFeatures[i].valence;
 			tracks.unshift(trackObj);
