@@ -27,7 +27,7 @@
 
 .navBar{
     display: flex;
-    position: absolute;
+    position: relative;
     width: 1334px;
     height: 82px;
     left: 68px;
@@ -42,6 +42,7 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: auto;
+    margin-top:auto;
     position: relative;
     max-width: 1297px;
     height: 620px;
