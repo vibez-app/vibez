@@ -1,9 +1,12 @@
 import React from 'react';
 import NavBar from '../components/MainPage/NavBar';
 import VisualContainer from './VisualContainer';
+// import axios from 'axios';
 
 
 function MainContainer() {
+
+
     return (
         <>
         <NavBar/>

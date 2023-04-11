@@ -1,18 +1,11 @@
 import React from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 
 function Login() {
 
-// const api = axios.create({
-// 	baseURL: 'http://localhost:3000/',
-// });
 
-// const handler = () => {
-// 	api
-// 		.get('/login');
-// };
 const CLIENT_ID = '1b713d514ffa42d5bfe3a41a1d1c7ec3';
-const REDIRECT_URI = "http://localhost:3000/home";
+const REDIRECT_URI = "http://localhost:8080/home";
 const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
 const RESPONSE_TYPE = "token";
 

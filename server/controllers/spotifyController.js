@@ -16,7 +16,9 @@ const spotifyController = {};
 
 spotifyController.getApprove = (req, res) => {
 	// eslint-disable-next-line prefer-template
-	res.redirect(
+	res
+	.headers("Access-Control-Allow-Origin", "*") // <<<John: Added a headers value that took care of the CORS issue. Now running into a different problem where we are getting bad requests
+	.redirect(
 		`https://accounts.spotify.com/authorize?${ 
 			querystring.stringify({
 				response_type: 'code',
