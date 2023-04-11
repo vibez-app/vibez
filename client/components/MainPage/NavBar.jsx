@@ -1,14 +1,15 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 
 function NavBar() {
     return (
         <div className='navBar'>
-            <a href='http://localhost:8080/'>VIBEZ</a>
-            <div className='userMenu'>
-                <a href='http://localhost:8080/'>MY VIBEZ</a>
-
-            </div>
+            <nav>
+                <NavLink to={'/login'}>LOGIN</NavLink>
+                <NavLink to={'/home'}>TODAYS VIBEZ</NavLink>
+                <NavLink to={'/log'}>LOG A VIBE</NavLink>
+            </nav>
         </div>
     );
 }

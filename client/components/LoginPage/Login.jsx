@@ -8,7 +8,7 @@ function Login() {
             <p>What vibes were you vibing.</p><b/>
             <p>Whats your vibe today.</p><b/>
             <p>What your music choices say about you.</p>
-            <button className="button" type='submit' > <a href='http://localhost:8080/'>Login with Spotify</a></button>
+            <button className="button" type='submit' > <a href='/home'>Login with Spotify</a></button>
         </div>
     );
 }

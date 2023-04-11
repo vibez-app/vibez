@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 
+*{
+    background-color: teal;
+}
 
 .orb {
     
@@ -26,12 +29,13 @@
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
 .navBar{
-    display: flex;
     position: relative;
-    width: 1334px;
-    height: 82px;
-    left: 68px;
-    top: 20px;
+}
+
+.navBar a{
+    position: relative;
+    background-color: beige;
+    margin-right: 20px;
 }
 
 .button{
