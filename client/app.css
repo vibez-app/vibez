@@ -39,7 +39,10 @@
 }
 
 .button{
-    background-color: greenyellow;
+    background-color:#1DB954;
+}
+button:hover{
+    background-color:#1ba24a;
 }
 
 .orbContainer{

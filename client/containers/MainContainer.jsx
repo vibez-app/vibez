@@ -6,11 +6,12 @@ import VisualContainer from './VisualContainer';
 
 function MainContainer() {
     return (
-        
+        <>
+        <NavBar/>
         <div className='mainContainer'>
             <VisualContainer/>
         </div>
-        
+        </>
     );
 }
  

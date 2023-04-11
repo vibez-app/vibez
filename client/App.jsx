@@ -9,14 +9,13 @@ import NavBar from "./components/MainPage/NavBar";
 
 function App() {
     return (
-        <>
-            <NavBar/>
+        
             <Routes>
                 <Route path='/login' element={<Login/>} />
                 <Route path='/home' element={<MainContainer/>} />
                 <Route path='/log' element={<VibeLogInput/>} />
             </Routes>
-        </>
+     
     )
 }
 
