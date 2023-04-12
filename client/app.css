@@ -6,6 +6,10 @@
 *{
     background-color: teal;
 }
+main{
+    max-width: 1200px;
+    margin: 40px;
+}
 
 .orb {
     

@@ -7,9 +7,12 @@ import {
      createRoutesFromElements
 } from "react-router-dom";
 
-//COMPONENTS
+// COMPONENTS
 import MainContainer, {userLoader } from "./containers/MainContainer";
 import Login from "./components/LoginPage/Login";
+
+// LAYOUTS (This will allow us to add a NavBar to a subset of pages)
+import RootLayout from "./layouts/RootLayout";
 
 
 
