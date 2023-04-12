@@ -37,7 +37,9 @@ app.get(
 	spotifyController.getUser,
 	userController.createUser,
 	(req, res) => {
-		res.redirect('/');
+		const destination =
+			process.env.NODE_ENV === 'development' ? 'http://localhost:8080/' : '/';
+		res.redirect(destination);
 	}
 );
 
