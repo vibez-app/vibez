@@ -1,10 +1,11 @@
 import React from 'react';
 import NavBar from '../components/MainPage/NavBar';
 import VisualContainer from './VisualContainer';
-// import axios from 'axios';
+// import { useLoaderData } from 'react-router-dom'; // this will allow us to grab the data fetched by our loader
 
 
-function MainContainer() {
+
+export default function MainContainer() {
 
 
     return (
@@ -17,4 +18,10 @@ function MainContainer() {
     );
 }
  
-export default MainContainer;
+// Loader for MainContainer// 
+//This is placed within the component and will run before rendering the component
+
+export const userLoader = async () => {
+    const res = await fetch('http://localhost:3000/user');
+    return res;
+}; 

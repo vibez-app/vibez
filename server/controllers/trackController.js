@@ -5,6 +5,7 @@ const axios = require('axios');
 const trackController = {};
 
 trackController.getTracks = async (req, res, next) => {
+	console.log('getTracks')
 	try {
 		// expect req to have date in format YYYY-MM-DD
 		const date = new Date(`${req.query.date}T00:00`);
@@ -63,6 +64,7 @@ trackController.getTracks = async (req, res, next) => {
 };
 
 trackController.getTrackFeatures = async (req, res, next) => {
+	console.log('getTrackFeatures')
 	try {
 		// get list of track Ids from track objects
 		const trackIds = res.locals.tracksInfo.map((el) => el.track.id);

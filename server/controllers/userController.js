@@ -5,6 +5,7 @@ const { User } = require('../models');
 const userController = {};
 
 userController.createUser = async (req, res, next) => {
+	console.log('createUser')
 	try {
 		let user = await User.findOne({ spotifyId: res.locals.user.id });
 		if (user) {
@@ -25,6 +26,7 @@ userController.createUser = async (req, res, next) => {
 		}
 		res.cookie('vibez', jwt.sign({ userId: user._id }, process.env.JWT_KEY));
 		res.locals.user = user;
+		console.log(res.locals.user)
 		return next();
 	} catch (err) {
 		return next(err);
@@ -32,6 +34,7 @@ userController.createUser = async (req, res, next) => {
 };
 
 userController.getUser = async (req, res, next) => {
+	console.log('getUser')
 	try {
 		if (req.cookies.vibez) {
 			const cookie = jwt.verify(req.cookies.vibez, process.env.JWT_KEY);
@@ -46,6 +49,7 @@ userController.getUser = async (req, res, next) => {
 };
 
 userController.addDay = async (req, res, next) => {
+	console.log('addDay')
 	try {
 		const { tracksInfo, tracksFeatures, user } = res.locals;
 		// build array of track objects
