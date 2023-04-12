@@ -15,19 +15,19 @@ const buffer = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
 const spotifyController = {};
 
 spotifyController.getApprove = (req, res) => {
+	console.log('hi');
 	// eslint-disable-next-line prefer-template
 	res
-	.headers("Access-Control-Allow-Origin", "*") // <<<John: Added a headers value that took care of the CORS issue. Now running into a different problem where we are getting bad requests
-	.redirect(
-		`https://accounts.spotify.com/authorize?${ 
-			querystring.stringify({
+		// .headers("Access-Control-Allow-Origin", "*") // <<<John: Added a headers value that took care of the CORS issue. Now running into a different problem where we are getting bad requests
+		.redirect(
+			`https://accounts.spotify.com/authorize?${querystring.stringify({
 				response_type: 'code',
 				client_id: clientId,
 				scope: spotifyScope,
 				redirect_uri: redirectUrl,
 				state: serverState,
 			})}`
-	);
+		);
 };
 
 spotifyController.checkApprove = (req, res, next) => {
