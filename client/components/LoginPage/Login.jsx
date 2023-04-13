@@ -1,7 +1,9 @@
 import React from 'react';
+import { redirect } from 'react-router-dom';
+import cookieParser from 'js-cookie'
 // import axios from 'axios';
 
-function Login() {
+export default function Login() {
 
 
 	return (
@@ -22,4 +24,14 @@ function Login() {
 	);
 }
 
-export default Login;
+//LOADER FOR CHECKING IF THE COOKIE EXISTS
+
+export const userLoggedIn = async () => {
+	const cookie = cookieParser.get('vibez'); //insert npm package method that reads our cookie here;
+	if(cookie){
+		return redirect('/home')
+	}
+	return null
+}
+
+

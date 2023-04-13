@@ -59,6 +59,7 @@
 		"cors": "^2.8.5",
 		"css-loader": "^6.7.3",
 		"dotenv": "^16.0.3",
+		"js-cookie": "^3.0.1",
 		"jsonwebtoken": "^9.0.0",
 		"mongoose": "^7.0.3",
 		"node-fetch": "^2.6.9",

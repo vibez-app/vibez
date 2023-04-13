@@ -66,6 +66,11 @@ app.get(
 );
 
 app.use(express.static(path.resolve(__dirname, '../dist')));
+
+app.get('/*', (req,res) =>{
+    res.sendFile(path.join(__dirname, '../dist/index.html'));
+});
+
 // parsing request body
 
 // catch-all route handler for any requests to an unknown route

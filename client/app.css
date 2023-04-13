@@ -46,7 +46,7 @@ main{
 .button{
     background-color:#1DB954;
 }
-button:hover{
+.button:hover{
     background-color:#1ba24a;
 }
 
