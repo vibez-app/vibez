@@ -47,28 +47,35 @@ app.get(
 	'/user',
 	userController.getUser,
 	tokenController.refreshToken,
-	(req, res) => {
-		console.log(res.locals.user)
-		res.status(200).json({ user: res.locals.user });
-	}
-);
-
-app.get(
-	'/day',
-	userController.getUser,
-	tokenController.refreshToken,
 	trackController.getTracks,
 	trackController.getTrackFeatures,
 	userController.addDay,
 	(req, res) => {
+		console.log(res.locals.user);
 		res.status(200).json(res.locals.user);
 	}
 );
 
+app.patch('/user', userController.updateLog, (req, res) => {
+	res.status(200).send();
+});
+
+// app.get(
+// 	'/day',
+// 	userController.getUser,
+// 	tokenController.refreshToken,
+// 	trackController.getTracks,
+// 	trackController.getTrackFeatures,
+// 	userController.addDay,
+// 	(req, res) => {
+// 		res.status(200).json(res.locals.user);
+// 	}
+// );
+
 app.use(express.static(path.resolve(__dirname, '../dist')));
 
-app.get('/*', (req,res) =>{
-    res.sendFile(path.join(__dirname, '../dist/index.html'));
+app.get('/*', (req, res) => {
+	res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
 // parsing request body

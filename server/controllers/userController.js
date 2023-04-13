@@ -5,7 +5,7 @@ const { User } = require('../models');
 const userController = {};
 
 userController.createUser = async (req, res, next) => {
-	console.log('createUser')
+	console.log('createUser');
 	try {
 		let user = await User.findOne({ spotifyId: res.locals.user.id });
 		if (user) {
@@ -24,11 +24,8 @@ userController.createUser = async (req, res, next) => {
 				days: {},
 			});
 		}
-		// const domainSet = process.env.NODE_ENV === 'development' ? 'http://localhost:8080/' : '/'
-		// console.log('domainSet', domainSet)
 		res.cookie('vibez', jwt.sign({ userId: user._id }, process.env.JWT_KEY));
 		res.locals.user = user;
-		console.log(res.locals.user)
 		return next();
 	} catch (err) {
 		return next(err);
@@ -36,7 +33,7 @@ userController.createUser = async (req, res, next) => {
 };
 
 userController.getUser = async (req, res, next) => {
-	console.log('getUser')
+	console.log('getUser');
 	try {
 		if (req.cookies.vibez) {
 			const cookie = jwt.verify(req.cookies.vibez, process.env.JWT_KEY);
@@ -51,7 +48,7 @@ userController.getUser = async (req, res, next) => {
 };
 
 userController.addDay = async (req, res, next) => {
-	console.log('addDay')
+	console.log('addDay');
 	try {
 		const { tracksInfo, tracksFeatures, user } = res.locals;
 		// build array of track objects
@@ -88,6 +85,37 @@ userController.addDay = async (req, res, next) => {
 		// pass along updated user
 		res.locals.user = updatedUser;
 		return next();
+	} catch (err) {
+		return next(err);
+	}
+};
+
+userController.updateLog = async (req, res, next) => {
+	try {
+		if (typeof req.body.log !== 'object')
+			throw new Error(
+				'request body must have a log object of prompts and answers'
+			);
+		if (req.cookies.vibez) {
+			const cookie = jwt.verify(req.cookies.vibez, process.env.JWT_KEY);
+			const user = await User.findById(cookie.userId);
+			if (!user.days[req.query.date].colors)
+				throw new Error('No vibez to log for this date');
+			// add our new day object at key of the date we want
+			user.days[req.query.date].log = req.body.log;
+			// update user with updated days object
+			const updatedUser = await User.findByIdAndUpdate(
+				user._id,
+				{
+					days: user.days,
+				},
+				{ new: true }
+			);
+
+			res.locals.user = updatedUser;
+			return next();
+		}
+		throw new Error('No user info found');
 	} catch (err) {
 		return next(err);
 	}
