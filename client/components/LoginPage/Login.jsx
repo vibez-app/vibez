@@ -14,7 +14,7 @@ export default function Login() {
 			<br />
 			<a
 				className="bg-green-400 p-1.5 mt-[40px] font-normal text-[px] rounded-[35px] w-[5px] h-[75px]"
-				href="/login"
+				href="/api/login"
 			>
 				Login with Spotify
 			</a>

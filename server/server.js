@@ -28,10 +28,10 @@ app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 
-app.get('/login', spotifyController.getApprove);
+app.get('/api/login', spotifyController.getApprove);
 
 app.get(
-	'/spotify',
+	'/api/spotify',
 	spotifyController.checkApprove,
 	spotifyController.getToken,
 	spotifyController.getUser,
@@ -44,7 +44,7 @@ app.get(
 );
 
 app.get(
-	'/user',
+	'/api/user',
 	userController.getUser,
 	tokenController.refreshToken,
 	trackController.getTracks,
@@ -56,7 +56,7 @@ app.get(
 	}
 );
 
-app.patch('/user', userController.updateLog, (req, res) => {
+app.patch('/api/user', userController.updateLog, (req, res) => {
 	res.status(200).send();
 });
 
@@ -72,11 +72,13 @@ app.patch('/user', userController.updateLog, (req, res) => {
 // 	}
 // );
 
-app.use(express.static(path.resolve(__dirname, '../dist')));
+if (process.env.NODE_ENV !== 'development') {
+	app.use(express.static(path.resolve(__dirname, '../dist')));
 
-app.get('/*', (req, res) => {
-	res.sendFile(path.join(__dirname, '../dist/index.html'));
-});
+	app.get('/*', (req, res) => {
+		res.sendFile(path.join(__dirname, '../dist/index.html'));
+	});
+}
 
 // parsing request body
 

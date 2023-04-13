@@ -8,7 +8,7 @@ module.exports = merge(common, {
 	mode: 'development',
 	output: {
 		// specifies where it will put file after bundling
-		path: path.resolve(__dirname, './dist'),
+		path: path.resolve(__dirname, 'dist'),
 		filename: 'main.js',
 		publicPath: '/', // IMPORTANT FOR ROUTING
 	},
@@ -20,7 +20,6 @@ module.exports = merge(common, {
 			},
 		],
 	},
-	target: 'web', // specifies where our app will run
 	devServer: {
 		// specifies dev server settings
 		port: '8080',
@@ -28,13 +27,13 @@ module.exports = merge(common, {
 			// specifies the directory that webpack will use to serve static files
 			directory: path.join(__dirname, './client'),
 		},
-		open: true, // automatically opens file after bundling
+		// open: true, // automatically opens file after bundling
 		hot: true,
 		// enables Hot module replacement exchanges/adds/removes modules while application is running
 		// without full reload
 		liveReload: true, // automatically update app as it makes changes
 		proxy: {
-			'/': 'http://localhost:3000/',
+			'/api/': 'http://localhost:3000/',
 		},
 		historyApiFallback: true, // IMPORTANT FOR ROUTING
 	},

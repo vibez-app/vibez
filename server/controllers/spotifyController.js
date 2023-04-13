@@ -7,7 +7,7 @@ const fetch = require('node-fetch');
 
 const clientId = process.env.CLIENT_ID;
 const clientSecret = process.env.CLIENT_SECRET;
-const redirectUrl = 'http://localhost:3000/spotify';
+const redirectUrl = 'http://localhost:3000/api/spotify';
 const spotifyScope = 'user-read-private user-read-recently-played';
 const serverState = randomstring.generate(16);
 const buffer = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
