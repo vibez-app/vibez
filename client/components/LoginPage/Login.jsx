@@ -1,11 +1,9 @@
 import React from 'react';
 import { redirect } from 'react-router-dom';
-import cookieParser from 'js-cookie'
+import cookieParser from 'js-cookie';
 // import axios from 'axios';
 
 export default function Login() {
-
-
 	return (
 		<div className="mt-[10%] text-white text-center text-4xl/[43.57px] font-extrabold">
 			<h1 className="text-9xl mb-[27px]">VIBEZ</h1>
@@ -28,10 +26,8 @@ export default function Login() {
 
 export const userLoggedIn = async () => {
 	const cookie = cookieParser.get('vibez'); //insert npm package method that reads our cookie here;
-	if(cookie){
-		return redirect('/home')
+	if (cookie) {
+		return redirect('/home');
 	}
-	return null
-}
-
-
+	return null;
+};
