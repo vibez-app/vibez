@@ -15,7 +15,6 @@ const buffer = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
 const spotifyController = {};
 
 spotifyController.getApprove = (req, res) => {
-	console.log('getApprove');
 	// eslint-disable-next-line prefer-template
 	res
 		// .headers("Access-Control-Allow-Origin", "*") // <<<John: Added a headers value that took care of the CORS issue. Now running into a different problem where we are getting bad requests
@@ -31,7 +30,6 @@ spotifyController.getApprove = (req, res) => {
 };
 
 spotifyController.checkApprove = (req, res, next) => {
-	console.log('checkApprove');
 	try {
 		const { code, state } = req.query;
 		if (!code) {
@@ -53,7 +51,6 @@ spotifyController.checkApprove = (req, res, next) => {
 };
 
 spotifyController.getToken = async (req, res, next) => {
-	console.log('getTokens');
 	try {
 		const params = new URLSearchParams();
 		params.append('code', res.locals.authCode);
@@ -76,7 +73,6 @@ spotifyController.getToken = async (req, res, next) => {
 };
 
 spotifyController.getUser = async (req, res, next) => {
-	console.log('getUser');
 	try {
 		const { token } = res.locals;
 		const response = await fetch('https://api.spotify.com/v1/me', {

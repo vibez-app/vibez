@@ -5,7 +5,6 @@ const { User } = require('../models');
 const userController = {};
 
 userController.createUser = async (req, res, next) => {
-	console.log('createUser');
 	try {
 		let user = await User.findOne({ spotifyId: res.locals.user.id });
 		if (user) {
@@ -33,7 +32,6 @@ userController.createUser = async (req, res, next) => {
 };
 
 userController.getUser = async (req, res, next) => {
-	console.log('getUser');
 	try {
 		if (req.cookies.vibez) {
 			const cookie = jwt.verify(req.cookies.vibez, process.env.JWT_KEY);
@@ -48,11 +46,11 @@ userController.getUser = async (req, res, next) => {
 };
 
 userController.addDay = async (req, res, next) => {
-	console.log('addDay');
 	try {
 		const { tracksInfo, tracksFeatures, user } = res.locals;
 		// build array of track objects
 		const tracks = [];
+		const colors = [];
 		for (let i = 0; i < tracksInfo.length; i++) {
 			// if track ids don't line up between info and features arrays, it's bad
 			if (tracksInfo[i].track.id !== tracksFeatures[i].id)
@@ -64,16 +62,22 @@ userController.addDay = async (req, res, next) => {
 			trackObj.energy = tracksFeatures[i].energy;
 			trackObj.valence = tracksFeatures[i].valence;
 			tracks.unshift(trackObj);
+			colors.unshift(
+				`hsl(${260 - 200 * tracksFeatures[i].valence},${
+					tracksFeatures[i].energy * 100
+				},50)`
+			);
 		}
 		// set up day object
 		const day = {
 			tracks,
+			colors,
 		};
 		// get current user record to get current days object
 		const curUser = await User.findById(user._id);
 		const curDays = curUser.days || {};
 		// add our new day object at key of the date we want
-		curDays[req.query.date] = day;
+		curDays[res.locals.date] = day;
 		// update user with updated days object
 		const updatedUser = await User.findByIdAndUpdate(
 			user._id,
@@ -82,8 +86,9 @@ userController.addDay = async (req, res, next) => {
 			},
 			{ new: true }
 		);
-		// pass along updated user
+		// pass along updated user and day
 		res.locals.user = updatedUser;
+		res.locals.day = { [res.locals.date]: day };
 		return next();
 	} catch (err) {
 		return next(err);

@@ -5,13 +5,13 @@ import NavBar from '../components/MainPage/NavBar';
 import VisualContainer from './VisualContainer';
 
 export default function MainContainer() {
-	// const user = useLoaderData();
+	const user = useLoaderData();
 
 	return (
 		<>
 			<NavBar />
 			<br />
-			{/* <div>{user.user.name}</div> */}
+			<div>{user.name}</div>
 			<div className="mainContainer">
 				<VisualContainer />
 			</div>
@@ -20,10 +20,10 @@ export default function MainContainer() {
 }
 
 // Loader for MainContainer//
-//This is placed within the component and will run before rendering the component
+// This is placed within the component and will run before rendering the component
 
 export const userLoader = async () => {
-	const cookie = cookieParser.get('vibez'); //insert npm package method that reads our cookie here;
+	const cookie = cookieParser.get('vibez'); // insert npm package method that reads our cookie here;
 	if (!cookie) {
 		return redirect('/');
 	}
