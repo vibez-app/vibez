@@ -6,17 +6,16 @@
 *{
     background-color: teal;
 }
-main{
-    max-width: 1200px;
-    margin: 40px;
+.mainContainer{
+    margin-top: 20px;
 }
 
 .orb {
     
     animation:spin 4s linear infinite;
     position: relative;
-    max-width: 500px;
-    height: 500px;
+    max-width: 450px;
+    height: 450px;
     margin: auto;
     margin-top: 6%;
     border-radius: 50%;
@@ -35,11 +34,11 @@ main{
 
 .navBar{
     position: relative;
+    margin: 20px
 }
 
 .navBar a{
     position: relative;
-    background-color: beige;
     margin-right: 20px;
 }
 
@@ -54,7 +53,7 @@ main{
     margin-left: auto;
     margin-right: auto;
     margin-bottom: auto;
-    margin-top:5.5%;
+    margin-top:5.0%;
     position: relative;
     max-width: 1297px;
     height: 620px;
@@ -93,3 +92,13 @@ main{
     border-radius: 20px;
     transform: rotate(-0.48deg);
 }
+    .arrow {
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        display: inline-block;
+        padding: 50px;
+      }
+      .left {
+        transform: rotate(135deg);
+        -webkit-transform: rotate(135deg);
+      }

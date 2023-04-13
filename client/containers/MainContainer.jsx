@@ -8,12 +8,12 @@ import VisualContainer from './VisualContainer';
 
 
 export default function MainContainer() {
-    const user = useLoaderData();
+    // const user = useLoaderData();
 
     return (
         <>
         <NavBar/><br/>
-        <div>{user.user.name}</div>
+        {/* <div>{user.user.name}</div> */}
         <div className='mainContainer'>
             
             <VisualContainer/>

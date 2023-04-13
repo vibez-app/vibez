@@ -6,9 +6,8 @@ function NavBar() {
     return (
         <div className='navBar'>
             <nav>
-                <NavLink to='/'>LOGIN</NavLink>
-                <NavLink to='/home'>TODAYS VIBEZ</NavLink>
-                <NavLink to='/log'>LOG A VIBE</NavLink>
+                <NavLink className= 'text-4xl mb-[27px] font-extrabold text-white' to='/'>VIBEZ</NavLink>
+                <NavLink className='right-0'>Lets vibe JohnnyBoy</NavLink>
             </nav>
         </div>
     );

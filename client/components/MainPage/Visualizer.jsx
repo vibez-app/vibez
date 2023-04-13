@@ -4,7 +4,9 @@ import MoodOrb from './MoodOrb';
 function Visualizer() {
     return (
         <div className="orbContainer">
-            <div className='backButton'>backbutton</div>
+            <div className='backButton'>
+                <div className = "arrow left"></div>
+            </div>
             <div className='orbVisualizer'>
             <MoodOrb/>
             </div>

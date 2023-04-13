@@ -24,9 +24,9 @@ userController.createUser = async (req, res, next) => {
 				days: {},
 			});
 		}
-		const domainSet = process.env.NODE_ENV === 'development' ? 'http://localhost:8080/' : '/'
-		console.log('domainSet', domainSet)
-		res.cookie('vibez', jwt.sign({ userId: user._id }, process.env.JWT_KEY), {domain: domainSet});
+		// const domainSet = process.env.NODE_ENV === 'development' ? 'http://localhost:8080/' : '/'
+		// console.log('domainSet', domainSet)
+		res.cookie('vibez', jwt.sign({ userId: user._id }, process.env.JWT_KEY));
 		res.locals.user = user;
 		console.log(res.locals.user)
 		return next();
