@@ -18,7 +18,6 @@ const getNewDate = (curDate = '', direction = 'previous') => {
 		date.setTime(date.getTime() + 86400000);
 	}
 	// return formatted date string
-	console.log(`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`);
 	return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 };
 

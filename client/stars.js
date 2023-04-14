@@ -28,7 +28,7 @@ const genStar = () => {
 		`${Math.ceil(genRandomNumber(1, 5))}s`
 	);
 
-	style.setProperty('--twinkle-delay', `${Math.ceil(genRandomNumber(1, 3))}s`);
+	style.setProperty('--twinkle-delay', `${Math.ceil(genRandomNumber(1, 5))}s`);
 
 	return star;
 };
