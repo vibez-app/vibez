@@ -3,6 +3,7 @@ import { useLoaderData, redirect } from 'react-router-dom';
 import cookieParser from 'js-cookie';
 import NavBar from '../components/MainPage/NavBar';
 import VisualContainer from './VisualContainer';
+import LogVibeButton from '../components/MainPage/logVibeButton';
 
 export default function MainContainer() {
 	const user = useLoaderData();
@@ -15,6 +16,7 @@ export default function MainContainer() {
 			<div className="mainContainer">
 				<VisualContainer />
 			</div>
+			<LogVibeButton/>
 		</>
 	);
 }

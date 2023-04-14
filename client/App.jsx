@@ -13,12 +13,15 @@ import Login, { userLoggedIn } from './components/LoginPage/Login';
 
 // LAYOUTS (This will allow us to add a NavBar to a subset of pages)
 import RootLayout from './layouts/RootLayout';
+import LogVibeContainer from './containers/LogVibeContainer';
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route path="/">
-			<Route index element={<Login />} loader={userLoggedIn} />
+			{/* index? */}
+			<Route index element={<Login />} loader={userLoggedIn} /> 
 			<Route path="/home" element={<MainContainer />} loader={userLoader} />
+			<Route path="/day1" element={<LogVibeContainer />} loader={userLoader} />
 		</Route>
 	)
 );
