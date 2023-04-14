@@ -10,27 +10,40 @@
     margin-top: 20px;
 }
 
-.orb {
+/* .orb {
     
-    animation:spin 4s linear infinite;
+    animation:spin 8s linear infinite;
     position: relative;
     max-width: 450px;
     height: 450px;
     margin: auto;
     margin-top: 6%;
     border-radius: 50%;
+    background: TEAL;
     box-shadow:
-        inset 0 0 50px #fff,
+        inset 0 0 30px white,
         inset 20px 0 60px violet,
-        inset -20px 0 60px blue,
-        inset 20px 0 300px violet,
-        inset -20px 0 300px blue,
+        inset -20px 0 60px green,
+        inset 20px 0 150px violet,
+        inset -20px 0 150px blue,
           0 0 50px #fff,
           -10px 0 60px violet,
           10px 0 60px blue;
 }
 
-@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+ @keyframes spin { 
+    
+    0%{background: hsl(173.4,12.8,50);}
+    10%{background: hsl(154.2,52.5,50);}
+    20%{background: hsl(187.2,48.8,50);}
+    30%{background: hsl(181,37.2,50)}
+    40%{background: hsl(174.2,82.39999999999999,50)}
+    50%{background: hsl(211.4,14.7,50)}
+    60%{background: orange}
+    70%{background: turquoise}
+    80%{background: violet}
+    90%{background: blue}
+    100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); background: yellow} }  */
 
 .navBar{
     position: relative;
@@ -102,3 +115,6 @@
         transform: rotate(135deg);
         -webkit-transform: rotate(135deg);
       }
+
+
+     
