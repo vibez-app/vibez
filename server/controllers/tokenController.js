@@ -7,6 +7,7 @@ const buffer = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
 const tokenController = {};
 
 tokenController.createToken = async (req, res, next) => {
+	console.log('createToken');
 	try {
 		let accessToken = await Token.findOne({ userId: res.locals.user._id });
 		if (!accessToken) {

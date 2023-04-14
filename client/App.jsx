@@ -1,32 +1,28 @@
 import React from 'react';
-import './app.css';
-// import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import axios from 'axios';
 
-const api = axios.create({
-	baseURL: 'http://localhost:3000/',
-});
+import {
+	createBrowserRouter,
+	RouterProvider,
+	Route,
+	createRoutesFromElements,
+} from 'react-router-dom';
 
-const handler = () => {
-	api
-		.get('/day', {
-			params: {
-				date: '2023-04-08',
-			},
-		})
-		.then((res) => console.log(res.data));
-};
+// COMPONENTS
+import MainContainer, { userLoader } from './containers/MainContainer';
+import Login, { userLoggedIn } from './components/LoginPage/Login';
 
-function App() {
-	return (
-		<div>
-			<h1>It is indeed a vibe</h1>
+// LAYOUTS (This will allow us to add a NavBar to a subset of pages)
+import RootLayout from './layouts/RootLayout';
 
-			<button type="button" onClick={handler} className="bg-gray-500">
-				CLICK ME
-			</button>
-		</div>
-	);
+const router = createBrowserRouter(
+	createRoutesFromElements(
+		<Route path="/">
+			<Route index element={<Login />} loader={userLoggedIn} />
+			<Route path="/home" element={<MainContainer />} loader={userLoader} />
+		</Route>
+	)
+);
+
+export default function App() {
+	return <RouterProvider router={router} />;
 }
-
-export default App;

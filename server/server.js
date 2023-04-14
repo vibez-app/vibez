@@ -28,30 +28,23 @@ app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 
-app.get('/login', spotifyController.getApprove);
+app.get('/api/login', spotifyController.getApprove);
 
 app.get(
-	'/spotify',
+	'/api/spotify',
 	spotifyController.checkApprove,
 	spotifyController.getToken,
 	spotifyController.getUser,
 	userController.createUser,
 	(req, res) => {
-		res.redirect('/');
+		const destination =
+			process.env.NODE_ENV === 'development' ? 'http://localhost:8080/' : '/';
+		res.redirect(destination);
 	}
 );
 
 app.get(
-	'/user',
-	userController.getUser,
-	tokenController.refreshToken,
-	(req, res) => {
-		res.status(200).json({ user: res.locals.user });
-	}
-);
-
-app.get(
-	'/day',
+	'/api/user',
 	userController.getUser,
 	tokenController.refreshToken,
 	trackController.getTracks,
@@ -62,7 +55,30 @@ app.get(
 	}
 );
 
-app.use(express.static(path.resolve(__dirname, '../dist')));
+app.patch('/api/user', userController.updateLog, (req, res) => {
+	res.status(200).send();
+});
+
+// app.get(
+// 	'/day',
+// 	userController.getUser,
+// 	tokenController.refreshToken,
+// 	trackController.getTracks,
+// 	trackController.getTrackFeatures,
+// 	userController.addDay,
+// 	(req, res) => {
+// 		res.status(200).json(res.locals.user);
+// 	}
+// );
+
+if (process.env.NODE_ENV !== 'development') {
+	app.use(express.static(path.resolve(__dirname, '../dist')));
+
+	app.get('/*', (req, res) => {
+		res.sendFile(path.join(__dirname, '../dist/index.html'));
+	});
+}
+
 // parsing request body
 
 // catch-all route handler for any requests to an unknown route

@@ -7,7 +7,7 @@ const fetch = require('node-fetch');
 
 const clientId = process.env.CLIENT_ID;
 const clientSecret = process.env.CLIENT_SECRET;
-const redirectUrl = 'http://localhost:3000/spotify';
+const redirectUrl = 'http://localhost:3000/api/spotify';
 const spotifyScope = 'user-read-private user-read-recently-played';
 const serverState = randomstring.generate(16);
 const buffer = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
@@ -16,16 +16,17 @@ const spotifyController = {};
 
 spotifyController.getApprove = (req, res) => {
 	// eslint-disable-next-line prefer-template
-	res.redirect(
-		`https://accounts.spotify.com/authorize?${ 
-			querystring.stringify({
+	res
+		// .headers("Access-Control-Allow-Origin", "*") // <<<John: Added a headers value that took care of the CORS issue. Now running into a different problem where we are getting bad requests
+		.redirect(
+			`https://accounts.spotify.com/authorize?${querystring.stringify({
 				response_type: 'code',
 				client_id: clientId,
 				scope: spotifyScope,
 				redirect_uri: redirectUrl,
 				state: serverState,
 			})}`
-	);
+		);
 };
 
 spotifyController.checkApprove = (req, res, next) => {
