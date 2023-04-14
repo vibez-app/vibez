@@ -4,12 +4,15 @@ import cookieParser from 'js-cookie';
 import NavBar from '../components/MainPage/NavBar';
 import VisualContainer from './VisualContainer';
 import UserContext from '../UserContext';
+import getNewDate from '../getDateString';
 
 export default function MainContainer() {
 	const [user, updateUser] = React.useState(useLoaderData());
+	const [date, changeDate] = React.useState(getNewDate());
 
 	return (
-		<UserContext.Provider value={user}>
+		// eslint-disable-next-line react/jsx-no-constructed-context-values
+		<UserContext.Provider value={{ user, date, updateUser, changeDate }}>
 			<NavBar />
 			<br />
 			<div className="mainContainer">
