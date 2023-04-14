@@ -10,7 +10,10 @@ userController.createUser = async (req, res, next) => {
 		if (user) {
 			user = await User.findByIdAndUpdate(
 				user._id,
-				{ refreshToken: res.locals.token.refresh_token },
+				{
+					refreshToken: res.locals.token.refresh_token,
+					imageUrl: res.locals.user.images[0].url,
+				},
 				{
 					new: true,
 				}

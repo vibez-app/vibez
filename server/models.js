@@ -23,6 +23,7 @@ const tokenSchema = new Schema({
 const userSchema = new Schema({
 	spotifyId: { type: String, required: true, unique: true },
 	name: { type: String, required: true },
+	imageUrl: { type: String },
 	refreshToken: { type: String, required: true },
 	days: { type: Object },
 });

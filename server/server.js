@@ -51,6 +51,7 @@ app.get(
 	trackController.getTrackFeatures,
 	userController.addDay,
 	(req, res) => {
+		console.log(res.locals.user);
 		res.status(200).json(res.locals.user);
 	}
 );

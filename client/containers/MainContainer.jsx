@@ -3,19 +3,19 @@ import { useLoaderData, redirect } from 'react-router-dom';
 import cookieParser from 'js-cookie';
 import NavBar from '../components/MainPage/NavBar';
 import VisualContainer from './VisualContainer';
+import UserContext from '../UserContext';
 
 export default function MainContainer() {
-	const user = useLoaderData();
+	const [user, updateUser] = React.useState(useLoaderData());
 
 	return (
-		<>
+		<UserContext.Provider value={user}>
 			<NavBar />
 			<br />
-			<div>{user.name}</div>
 			<div className="mainContainer">
 				<VisualContainer />
 			</div>
-		</>
+		</UserContext.Provider>
 	);
 }
 
