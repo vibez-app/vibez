@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom'
 
 function NavBar() {
 	return (
@@ -11,7 +11,7 @@ function NavBar() {
 				>
 					VIBEZ
 				</NavLink>
-				<NavLink className="right-0">Lets vibe JohnnyBoy</NavLink>
+				<NavLink className="right-0">Lets vibe </NavLink>
 			</nav>
 		</div>
 	);
