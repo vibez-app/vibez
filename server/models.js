@@ -2,14 +2,6 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-// const sessionSchema = new Schema({
-// 	userId: {
-// 		type: Schema.Types.ObjectId,
-// 		ref: 'User',
-// 	},
-// 	createdAt: { type: Date, default: Date.now },
-// });
-
 const tokenSchema = new Schema({
 	userId: {
 		type: Schema.Types.ObjectId,
@@ -29,7 +21,6 @@ const userSchema = new Schema({
 });
 
 module.exports = {
-	// Session: mongoose.model('Session', sessionSchema),
 	User: mongoose.model('User', userSchema),
 	Token: mongoose.model('Token', tokenSchema),
 };
