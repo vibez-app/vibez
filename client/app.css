@@ -5,6 +5,7 @@
 
 *{
     background-color: teal;
+    box-sizing: border-box;
 }
 .mainContainer{
     margin-top: 20px;

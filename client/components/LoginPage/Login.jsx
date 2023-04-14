@@ -13,7 +13,7 @@ export default function Login() {
 			<p>What your music choices say about you.</p>
 			<br />
 			<a
-				className="bg-green-400 p-1.5 mt-[40px] font-normal text-[px] rounded-[35px] w-[5px] h-[75px]"
+				className="button p-[11] mt-[40px] font-normal text-[40px] rounded-[35px] inline-block w-[480px]"
 				href="/api/login"
 			>
 				Login with Spotify
