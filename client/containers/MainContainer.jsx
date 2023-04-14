@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useLoaderData, redirect } from 'react-router-dom';
 import cookieParser from 'js-cookie';
 import NavBar from '../components/MainPage/NavBar';
@@ -7,12 +7,20 @@ import UserContext from '../UserContext';
 import getNewDate from '../getDateString';
 
 export default function MainContainer() {
-	const [user, updateUser] = React.useState(useLoaderData());
-	const [date, changeDate] = React.useState(getNewDate());
+	const startDate = getNewDate();
+	const startUser = useLoaderData();
+	const [user, updateUser] = React.useState(startUser);
+	const [date, changeDate] = React.useState(startDate);
+	const contextObj = useMemo(() => ({
+		startDate,
+		user,
+		date,
+		updateUser,
+		changeDate,
+	}));
 
 	return (
-		// eslint-disable-next-line react/jsx-no-constructed-context-values
-		<UserContext.Provider value={{ user, date, updateUser, changeDate }}>
+		<UserContext.Provider value={contextObj}>
 			<NavBar />
 			<br />
 			<div className="mainContainer">
