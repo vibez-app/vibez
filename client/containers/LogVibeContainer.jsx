@@ -33,7 +33,7 @@ function LogVibeContainer() {
         <p className=' row-span-1 flex justify-center items-center font-extrabold text-5xl'>
           Tell me about the vibe
         </p>
-        <textarea placeholder ="Take a moment to reflect on how you felt today. Why do you think you listened to these songs? How did these songs change your mood" value = {log} className='glassyContainer row-span-4 flex justify-center p-5 text-2xl' onChange={(e) =>updateEntry(e)}/>
+        <textarea placeholder ="Take a moment to reflect on how you felt today. Why do you think you listened to these songs? How did these songs change your mood..." value = {log} className='glassyContainer row-span-4 flex justify-center p-5 text-2xl' onChange={(e) =>updateEntry(e)}/>
       </div>
     </div>
   )
