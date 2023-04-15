@@ -71,7 +71,6 @@
 		"postcss-loader": "^7.2.4",
 		"randomstring": "^1.2.3",
 		"react": "^18.2.0",
-		"react-animated-bg": "^1.2.2",
 		"react-dom": "^18.2.0",
 		"react-router-dom": "^6.10.0",
 		"style-loader": "^3.3.2",
