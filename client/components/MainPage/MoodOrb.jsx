@@ -34,7 +34,6 @@ function MoodOrb() {
 			className="orb font-bold text-white flex justify-center items-center text-2xl"
 			bg={ colors? colors[index] : ""}
 		>
-			{colors.length ? '' : 'A quiet day, no vibez to show'}
 			{(colors && colors.length) ? '' : 'A quiet day, no vibez to show'}
 		</Orb>
 	);
