@@ -12,8 +12,8 @@ function Visualizer() {
 	const userContext = React.useContext(UserContext);
 	return (
 		<div className="orbContainer">
-			<div className="backButton">
-				<div className="arrow left" />
+			<div className="backButton flex flex-col justify-center">
+                <button type="button" className="h-[100%] arrow-icon fa-7x"> <FontAwesomeIcon icon={faChevronLeft} className="hover:text-indigo-500 bg-transparent text-white"/></button>
 			</div>
 			<div className="orbVisualizer">
 				<p className="text-white font-bold text-center">
@@ -21,7 +21,8 @@ function Visualizer() {
 				</p>
 				<MoodOrb />
 			</div>
-			<div className="nextButton">nextButton</div>
+			<div className="nextButton flex flex-col justify-center">nextButton</div>
+                <button type="button" className="h-[100%] fa-7x" > <FontAwesomeIcon icon={faChevronRight} className="hover:text-indigo-500 bg-transparent text-white"/></button>
 		</div>
 	);
 }
