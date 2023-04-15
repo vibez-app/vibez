@@ -1,11 +1,11 @@
 module.exports = {
-  content: ['./client/**/*.{js,jsx}', './client/index.html'],
-  theme: {
-      extend: {
-          colors: {
-            teal: '#429E9D'
-          },
-      },
-  },
-  plugins: [],
+	content: ['./client/**/*.{js,jsx}', './client/index.html'],
+	theme: {
+		extend: {
+			colors: {
+				midnight: 'rgb(0, 33, 73)',
+			},
+		},
+	},
+	plugins: [],
 };
