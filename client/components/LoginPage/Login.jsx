@@ -12,8 +12,8 @@ export default function Login() {
 			<p>Whats your vibe today.</p>
 			<p>What your music choices say about you.</p>
 			<br />
-			<a
-				className="bg-green-400 p-1.5 mt-[40px] font-normal text-[px] rounded-[35px] w-[5px] h-[75px]"
+			<a // Added button styling so it can change color on hover and just editing the sizing - Cristian
+				className="button p-[11] mt-[40px] font-normal text-[40px] rounded-[35px] inline-block w-[480px]"
 				href="/api/login"
 			>
 				Login with Spotify
@@ -22,10 +22,10 @@ export default function Login() {
 	);
 }
 
-//LOADER FOR CHECKING IF THE COOKIE EXISTS
+// LOADER FOR CHECKING IF THE COOKIE EXISTS
 
 export const userLoggedIn = async () => {
-	const cookie = cookieParser.get('vibez'); //insert npm package method that reads our cookie here;
+	const cookie = cookieParser.get('vibez'); // insert npm package method that reads our cookie here;
 	if (cookie) {
 		return redirect('/home');
 	}
