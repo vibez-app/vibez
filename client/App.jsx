@@ -8,13 +8,13 @@ import {
 } from 'react-router-dom';
 
 // COMPONENTS
-import MainContainer, { userLoader } from './containers/MainContainer';
-import Login, { userLoggedIn } from './components/LoginPage/Login';
+import MainContainer, {userLoader} from './containers/MainContainer';
+import Login, {userLoggedIn} from './components/LoginPage/Login';
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route path="/">
-			<Route index element={<Login />} loader={userLoggedIn} />
+			<Route index element={<Login />} loader={userLoggedIn}/>
 			<Route path="/home" element={<MainContainer />} loader={userLoader} />
 		</Route>
 	)

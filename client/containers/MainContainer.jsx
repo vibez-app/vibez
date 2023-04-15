@@ -39,6 +39,7 @@ export const userLoader = async () => {
 		return redirect('/');
 	}
 	const res = await fetch('/api/user');
+	// const user = fakeDB;
 	const user = await res.json();
 	return user;
 };
