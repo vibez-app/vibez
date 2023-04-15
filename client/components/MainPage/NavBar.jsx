@@ -15,7 +15,7 @@ function NavBar() {
 		<div className="navBar">
 			<nav className="flex justify-between items-center">
 				<NavLink className="text-4xl font-extrabold text-white">VIBEZ</NavLink>
-				<NavLink className="font-bold text-white">
+				<NavLink className="fixed bottom-5 left-5 font-bold text-white">
 					Let&apos;s Vibe, {userContext.user.name}
 				</NavLink>
 				<NavLink>
@@ -25,13 +25,13 @@ function NavBar() {
 						alt="profile"
 					/>
 				</NavLink>
+				<NavLink
+					className="fixed bottom-5 right-5 font-bold text-white"
+					onClick={logoutHandler}
+				>
+					LOGOUT
+				</NavLink>
 			</nav>
-			<NavLink
-				className="fixed bottom-5 right-5 font-bold text-white"
-				onClick={logoutHandler}
-			>
-				LOGOUT
-			</NavLink>
 			{redirectLogin && <Navigate to="/" />}
 		</div>
 	);

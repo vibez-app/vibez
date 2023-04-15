@@ -77,7 +77,7 @@ userController.addDay = async (req, res, next) => {
 			colors.unshift(
 				`hsl(${260 - 200 * tracksFeatures[i].valence},${
 					tracksFeatures[i].energy * 100
-				},50)`
+				}%,50%)`
 			);
 		}
 		// set up day object

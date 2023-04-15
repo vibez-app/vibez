@@ -4,7 +4,7 @@ import cookieParser from 'js-cookie';
 import NavBar from '../components/MainPage/NavBar';
 import VisualContainer from './VisualContainer';
 import UserContext from '../UserContext';
-import getNewDate from '../getDateString';
+import getNewDate from '../Utils/getDateString';
 
 export default function MainContainer() {
 	const startDate = getNewDate();

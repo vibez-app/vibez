@@ -1,14 +1,14 @@
 import React from 'react';
 import MoodOrb from './MoodOrb';
 import UserContext from '../../UserContext';
-import formatDateString from '../../formatDateString';
+import formatDateString from '../../Utils/formatDateString';
 
 function Visualizer() {
 	const userContext = React.useContext(UserContext);
 	return (
 		<div className="orbContainer">
 			<div className="backButton">
-				<div className="arrow left"></div>
+				<div className="arrow left" />
 			</div>
 			<div className="orbVisualizer">
 				<p className="text-white font-bold text-center">
