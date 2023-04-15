@@ -17,13 +17,15 @@ const Orb = styled.div`
 
 function MoodOrb() {
 	const userContext = React.useContext(UserContext);
-	const { colors } = userContext.user.days[userContext.date] || [];
+	const colors = userContext.user.days[userContext.date]
+		? userContext.user.days[userContext.date].colors
+		: [];
 	const [index, updateIndex] = React.useState(0);
 
 	React.useEffect(() => {
 		const interval = setInterval(() => {
 			updateIndex((currentIndex) =>
-				(colors && currentIndex === colors.length - 1) ? 0 : currentIndex + 1
+				currentIndex === colors.length - 1 ? 0 : currentIndex + 1
 			);
 		}, 500);
 		return () => clearInterval(interval);
@@ -32,9 +34,9 @@ function MoodOrb() {
 	return (
 		<Orb
 			className="orb font-bold text-white flex justify-center items-center text-2xl"
-			bg={ colors? colors[index] : ""}
+			bg={colors[index]}
 		>
-			{(colors && colors.length) ? '' : 'A quiet day, no vibez to show'}
+			{colors.length ? '' : 'A quiet day, no vibez to show'}
 		</Orb>
 	);
 }
