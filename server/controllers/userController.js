@@ -93,7 +93,8 @@ userController.addDay = async (req, res, next) => {
 		const curUser = await User.findById(user._id);
 		const curDays = curUser.days || {};
 		// add our new day object at key of the date we want
-		curDays[res.locals.date] = day;
+		if(!curDays[res.locals.date]) curDays[res.locals.date] = day;
+
 		// update user with updated days object
 		const updatedUser = await User.findByIdAndUpdate(
 			user._id,
@@ -113,10 +114,9 @@ userController.addDay = async (req, res, next) => {
 
 userController.updateLog = async (req, res, next) => {
 	try {
-		// make sure we received data to add in correct format
-		if (typeof req.body.log !== 'object')
+		if (typeof req.body.log !== 'string')
 			throw new Error(
-				'request body must have a log object of prompts and answers'
+				'request body must have string of log'
 			);
 		// check if we have user data
 		if (req.cookies.vibez) {
@@ -138,6 +138,7 @@ userController.updateLog = async (req, res, next) => {
 			);
 
 			res.locals.user = updatedUser;
+			res.locals.updatedLog = user.days[req.query.date].log;
 			return next();
 		}
 		throw new Error('No user info found');
