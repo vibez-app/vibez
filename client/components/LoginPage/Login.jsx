@@ -1,7 +1,7 @@
 import React from 'react';
 import { redirect } from 'react-router-dom';
 import cookieParser from 'js-cookie';
-// import axios from 'axios';
+
 
 export default function Login() {
 	return (
