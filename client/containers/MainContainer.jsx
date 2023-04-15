@@ -33,14 +33,14 @@ export default function MainContainer() {
 // Loader for MainContainer//
 // This is placed within the component and will run before rendering the component
 
-// export const userLoader = async () => {
-// 	const cookie = cookieParser.get('vibez'); // insert npm package method that reads our cookie here;
-// 	if (!cookie) {
-// 		return redirect('/');
-// 	}
-// 	// const res = await fetch('/api/user');
-// 	// const user = fakeDB;
-// 	// const user = await res.json();
-// 	console.log(user)
-// 	return user;
-// };
+export const userLoader = async () => {
+	const cookie = cookieParser.get('vibez'); // insert npm package method that reads our cookie here;
+	if (!cookie) {
+		return redirect('/');
+	}
+	const res = await fetch('/api/user');
+	// const user = fakeDB;
+	const user = await res.json();
+	// console.log(user)
+	return user;
+};

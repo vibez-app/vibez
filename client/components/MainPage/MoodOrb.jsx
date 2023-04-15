@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import UserContext from '../../UserContext';
 
 const Orb = styled.div`
+  animation: spin 8s linear infinite
 	transition: all 0.5s linear;
 	background: ${(props) => props.bg};
 	max-width: 450px;
@@ -10,7 +11,7 @@ const Orb = styled.div`
 	margin: auto;
 	margin-top: 6%;
 	border-radius: 50%;
-	box-shadow: inset 0 0 50px #fff, inset 20px 0 60px violet,
+	box-shadow: inset 0 0 30px #fff, inset 20px 0 60px violet,
 		inset -20px 0 60px blue, 0 0 50px #fff, -10px 0 60px violet,
 		10px 0 60px blue;
 `;
