@@ -29,7 +29,14 @@ function MoodOrb() {
 		return () => clearInterval(interval);
 	}, []);
 
-	return <Orb className="orb" bg={colors[index]} />;
+	return (
+		<Orb
+			className="orb font-bold text-white flex justify-center items-center text-2xl"
+			bg={colors[index]}
+		>
+			{colors.length ? '' : 'No vibe available for this date'}
+		</Orb>
+	);
 }
 
 export default MoodOrb;

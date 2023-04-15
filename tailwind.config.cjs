@@ -4,6 +4,7 @@ module.exports = {
 		extend: {
 			colors: {
 				midnight: 'rgb(0, 33, 73)',
+				spotifyGreen: '#1db954',
 			},
 		},
 	},
