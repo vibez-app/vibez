@@ -25,7 +25,7 @@ function MoodOrb() {
 	React.useEffect(() => {
 		const interval = setInterval(() => {
 			updateIndex((currentIndex) =>
-				currentIndex === colors.length - 1 ? 0 : currentIndex + 1
+				currentIndex >= colors.length - 1 ? 0 : currentIndex + 1
 			);
 		}, 500);
 		return () => clearInterval(interval);
