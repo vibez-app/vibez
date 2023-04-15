@@ -8,7 +8,7 @@ const getNewDate = (curDate = '', direction = 'previous') => {
 		date.setSeconds(0);
 		date.setMilliseconds(0);
 	} else {
-		date = new Date(`${curDate}T00:00:00:00`);
+		date = new Date(`${curDate}`);
 	}
 	// date is now the start of today
 	// make day start of previous or next (convert to unix milliseconds and add/subtract # of seconds in day)
