@@ -55,8 +55,16 @@ app.get(
 	}
 );
 
+// app.get(
+// 	'/api/userLog',
+// 	userController.getLog, (req, res) => {
+// 		console.log('here')
+// 		res.status(200).send(res.locals.log)
+// 	}
+// )
+
 app.patch('/api/user', userController.updateLog, (req, res) => {
-	res.status(200).send();
+	res.status(200).send(res.locals.user);
 });
 
 // app.get(

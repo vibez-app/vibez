@@ -95,9 +95,35 @@ userController.addDay = async (req, res, next) => {
 	}
 };
 
+// userController.getLog = async (req, res, next) => {
+// 	try {
+// 		if (typeof req.body.log !== 'string')
+// 			throw new Error(
+// 				'request body must have a log object of prompts and answers'
+// 			);
+// 		if (req.cookies.vibez) {
+// 			const cookie = jwt.verify(req.cookies.vibez, process.env.JWT_KEY);
+// 			const user = await User.findById(cookie.userId);
+// 			if (!user.days[req.query.date].colors)
+// 				throw new Error('No vibez to log for this date');
+// 			// add our new day object at key of the date we want
+// 			if(user.days[req.query.date].log){
+// 				res.locals.log = user.days[req.query.date].log;
+// 			}else{
+// 				res.locals.log = null;
+// 			}
+// 			console.log('in get', res.locals.log);
+// 			return next();
+// 		}
+// 		throw new Error('No user info found');
+// 	} catch (err) {
+// 		return next(err);
+// 	}
+// };
+
 userController.updateLog = async (req, res, next) => {
 	try {
-		if (typeof req.body.log !== 'object')
+		if (typeof req.body.log !== 'string')
 			throw new Error(
 				'request body must have a log object of prompts and answers'
 			);

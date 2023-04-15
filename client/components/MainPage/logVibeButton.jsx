@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 function LogVibeButton() {
     const navigate = useNavigate();
     const clickLog = () => {
-      navigate('/day1')
+      navigate("/2023-04-08")
     }
 
     return <div className='flex justify-center items-center m-10'>
