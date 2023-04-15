@@ -19,11 +19,17 @@ function NavBar() {
 					Let&apos;s Vibe, {userContext.user.name}
 				</NavLink>
 				<NavLink>
-					<img
-						className="h-16 rounded-full"
-						src={userContext.user.imageUrl}
-						alt="profile"
-					/>
+					{userContext.user.imageUrl ? (
+						<img
+							className="h-16 rounded-full"
+							src={userContext.user.imageUrl}
+							alt="profile"
+						/>
+					) : (
+						<div className="rounded-full h-16 w-16 font-bold text-white bg-spotifyGreen flex justify-center items-center text-2xl">
+							{userContext.user.name[0].toUpperCase()}
+						</div>
+					)}
 				</NavLink>
 				<NavLink
 					className="fixed bottom-5 right-5 font-bold text-white"

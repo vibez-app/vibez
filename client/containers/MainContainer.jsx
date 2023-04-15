@@ -1,15 +1,17 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useLoaderData, redirect } from 'react-router-dom';
 import cookieParser from 'js-cookie';
 import NavBar from '../components/MainPage/NavBar';
 import VisualContainer from './VisualContainer';
-import LogVibeButton from '../components/MainPage/logVibeButton';
+
+import LogVibeContainer from './LogVibeContainer'
 import UserContext from '../UserContext';
 import getNewDate from '../Utils/getDateString';
 
 export default function MainContainer() {
 	const startDate = getNewDate();
 	const startUser = useLoaderData();
+	const [toLog, setToLog] = useState(false);
 	const [user, updateUser] = React.useState(startUser);
 	const [date, changeDate] = React.useState(startDate);
 	const contextObj = useMemo(() => ({
@@ -24,10 +26,17 @@ export default function MainContainer() {
 		<UserContext.Provider value={contextObj}>
 			<NavBar />
 			<br />
-			<div className="mainContainer">
-				<VisualContainer />
-			</div>
-			<LogVibeButton/>
+			{!toLog &&
+				<div className="mainContainer">
+					<VisualContainer />
+				</div>
+			}
+			{toLog &&
+				<LogVibeContainer/>
+			}
+			<div className='flex justify-center items-center m-10'>
+      	<button type = "button" className='bg-spotifyGreen h-10 w-80 rounded-2xl text-white text-3xl' onClick={()=> setToLog(!toLog)}> Log the Vibe </button>
+   		</div>
 		</UserContext.Provider>
 	);
 }

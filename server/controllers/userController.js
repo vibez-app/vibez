@@ -14,7 +14,9 @@ userController.createUser = async (req, res, next) => {
 				user._id,
 				{
 					refreshToken: res.locals.token.refresh_token,
-					imageUrl: res.locals.user.images[0].url,
+					imageUrl: res.locals.user.images[0]
+						? res.locals.user.images[0].url
+						: '',
 				},
 				{
 					new: true,
@@ -25,7 +27,9 @@ userController.createUser = async (req, res, next) => {
 			user = await User.create({
 				spotifyId: res.locals.user.id,
 				name: res.locals.user.display_name,
-				imageUrl: res.locals.user.images[0].url,
+				imageUrl: res.locals.user.images[0]
+					? res.locals.user.images[0].url
+					: '',
 				refreshToken: res.locals.token.refresh_token,
 				days: {},
 			});
@@ -89,7 +93,8 @@ userController.addDay = async (req, res, next) => {
 		const curUser = await User.findById(user._id);
 		const curDays = curUser.days || {};
 		// add our new day object at key of the date we want
-		curDays[res.locals.date] = day;
+		if(!curDays[res.locals.date]) curDays[res.locals.date] = day;
+
 		// update user with updated days object
 		const updatedUser = await User.findByIdAndUpdate(
 			user._id,
@@ -107,37 +112,11 @@ userController.addDay = async (req, res, next) => {
 	}
 };
 
-// userController.getLog = async (req, res, next) => {
-// 	try {
-// 		if (typeof req.body.log !== 'string')
-// 			throw new Error(
-// 				'request body must have a log object of prompts and answers'
-// 			);
-// 		if (req.cookies.vibez) {
-// 			const cookie = jwt.verify(req.cookies.vibez, process.env.JWT_KEY);
-// 			const user = await User.findById(cookie.userId);
-// 			if (!user.days[req.query.date].colors)
-// 				throw new Error('No vibez to log for this date');
-// 			// add our new day object at key of the date we want
-// 			if(user.days[req.query.date].log){
-// 				res.locals.log = user.days[req.query.date].log;
-// 			}else{
-// 				res.locals.log = null;
-// 			}
-// 			console.log('in get', res.locals.log);
-// 			return next();
-// 		}
-// 		throw new Error('No user info found');
-// 	} catch (err) {
-// 		return next(err);
-// 	}
-// };
-
 userController.updateLog = async (req, res, next) => {
 	try {
 		if (typeof req.body.log !== 'string')
 			throw new Error(
-				'request body must have a log object of prompts and answers'
+				'request body must have string of log'
 			);
 		// check if we have user data
 		if (req.cookies.vibez) {
@@ -159,6 +138,7 @@ userController.updateLog = async (req, res, next) => {
 			);
 
 			res.locals.user = updatedUser;
+			res.locals.updatedLog = user.days[req.query.date].log;
 			return next();
 		}
 		throw new Error('No user info found');

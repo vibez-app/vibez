@@ -13,8 +13,7 @@ import UserContext from './UserContext';
 import MainContainer, { userLoader } from './containers/MainContainer';
 import Login, { userLoggedIn } from './components/LoginPage/Login';
 
-// LAYOUTS (This will allow us to add a NavBar to a subset of pages)
-import RootLayout from './layouts/RootLayout';
+
 import LogVibeContainer from './containers/LogVibeContainer';
 
 // test date 

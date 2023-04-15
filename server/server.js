@@ -56,29 +56,13 @@ app.get(
 	}
 );
 
-// app.get(
-// 	'/api/userLog',
-// 	userController.getLog, (req, res) => {
-// 		console.log('here')
-// 		res.status(200).send(res.locals.log)
-// 	}
-// )
+
 
 app.patch('/api/user', userController.updateLog, (req, res) => {
 	res.status(200).send(res.locals.user);
 });
 
-// app.get(
-// 	'/day',
-// 	userController.getUser,
-// 	tokenController.refreshToken,
-// 	trackController.getTracks,
-// 	trackController.getTrackFeatures,
-// 	userController.addDay,
-// 	(req, res) => {
-// 		res.status(200).json(res.locals.user);
-// 	}
-// );
+
 
 if (process.env.NODE_ENV !== 'development') {
 	app.use(express.static(path.resolve(__dirname, '../dist')));
