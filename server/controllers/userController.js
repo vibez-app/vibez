@@ -27,7 +27,9 @@ userController.createUser = async (req, res, next) => {
 			user = await User.create({
 				spotifyId: res.locals.user.id,
 				name: res.locals.user.display_name,
-				imageUrl: res.locals.user.images[0].url || '',
+				imageUrl: res.locals.user.images[0]
+					? res.locals.user.images[0].url
+					: '',
 				refreshToken: res.locals.token.refresh_token,
 				days: {},
 			});
