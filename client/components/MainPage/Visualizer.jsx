@@ -21,8 +21,9 @@ function Visualizer() {
 				</p>
 				<MoodOrb />
 			</div>
-			<div className="nextButton flex flex-col justify-center">nextButton</div>
+			<div className="nextButton flex flex-col justify-center">
                 <button type="button" className="h-[100%] fa-7x" > <FontAwesomeIcon icon={faChevronRight} className="hover:text-indigo-500 bg-transparent text-white"/></button>
+                </div>
 		</div>
 	);
 }
