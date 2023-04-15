@@ -1,29 +1,32 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useMemo } from 'react';
 import { useLoaderData, redirect } from 'react-router-dom';
 import cookieParser from 'js-cookie';
 import NavBar from '../components/MainPage/NavBar';
 import VisualContainer from './VisualContainer';
-// import fakeDB from '../fakeDB';
+import UserContext from '../UserContext';
+import getNewDate from '../Utils/getDateString';
 
 export default function MainContainer() {
-	// const user = useLoaderData();
-	// const date = '2023-04-08';
-	// const [userData, updateUserData] = useState({
-	// 	User: user.name,
-	// 	Day: user.days[date],
-	// 	Colors: user.days[date].colors
-	// });
+	const startDate = getNewDate();
+	const startUser = useLoaderData();
+	const [user, updateUser] = React.useState(startUser);
+	const [date, changeDate] = React.useState(startDate);
+	const contextObj = useMemo(() => ({
+		startDate,
+		user,
+		date,
+		updateUser,
+		changeDate,
+	}));
 
 	return (
-		<>
+		<UserContext.Provider value={contextObj}>
 			<NavBar />
-			{/* <div>{userData.name}</div>
-			<div>{userData.Colors}</div> */}
-			<div className="mainContainer" >
-				<VisualContainer/>
+			<br />
+			<div className="mainContainer">
+				<VisualContainer />
 			</div>
-		</>
+		</UserContext.Provider>
 	);
 }
 

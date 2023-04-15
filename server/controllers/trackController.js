@@ -63,6 +63,7 @@ trackController.getTracks = async (req, res, next) => {
 
 trackController.getTrackFeatures = async (req, res, next) => {
 	try {
+		// if we don't have any tracks, pass along an empty feature array
 		if (!res.locals.tracksInfo.length) {
 			res.locals.tracksFeatures = [];
 			return next();
