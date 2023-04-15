@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { twMerge } from 'tailwind-merge';
 import axios from 'axios';
+import UserContext from '../UserContext';
 import MoodOrb from '../components/MainPage/MoodOrb';
 import NavBar from '../components/MainPage/NavBar';
 
 
 function LogVibeContainer() {
-  const date = "2023-04-08"
+  // const userContext = React.useContext(UserContext);
+  // const selectedDate = `${userContext.date}`;
+
   const [log, setLog] = useState("")
   useEffect(() => {
     const fetchData = async () => {
-        axios.get('/api/user?date=2023-04-08').then((response) => {
-          if(response.data.days[date].log){
-            setLog(response.data.days[date].log)
-            console.log(log)
-          }
-        })
+        const userContext = React.useContext(UserContext);
+        if(userContext.user.days[userContext.date].log){
+          setLog(userContext.user.days[userContext.date].log)
+        }
     }
     fetchData();
   }, [])

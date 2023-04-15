@@ -1,23 +1,34 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useLoaderData, redirect } from 'react-router-dom';
 import cookieParser from 'js-cookie';
 import NavBar from '../components/MainPage/NavBar';
 import VisualContainer from './VisualContainer';
 import LogVibeButton from '../components/MainPage/logVibeButton';
+import UserContext from '../UserContext';
+import getNewDate from '../Utils/getDateString';
 
 export default function MainContainer() {
-	const user = useLoaderData();
+	const startDate = getNewDate();
+	const startUser = useLoaderData();
+	const [user, updateUser] = React.useState(startUser);
+	const [date, changeDate] = React.useState(startDate);
+	const contextObj = useMemo(() => ({
+		startDate,
+		user,
+		date,
+		updateUser,
+		changeDate,
+	}));
 
 	return (
-		<>
+		<UserContext.Provider value={contextObj}>
 			<NavBar />
 			<br />
-			<div>{user.name}</div>
 			<div className="mainContainer">
 				<VisualContainer />
 			</div>
 			<LogVibeButton/>
-		</>
+		</UserContext.Provider>
 	);
 }
 
