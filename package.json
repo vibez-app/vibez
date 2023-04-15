@@ -11,7 +11,8 @@
 		"lint": "eslint . --fix --max-warnings=0",
 		"format": "prettier . --write",
 		"prepare": "husky install",
-		"coverage": "jest --coverage"
+		"coverage": "jest --coverage",
+		"concurrent": "concurrently \"npm run dev\" \"npm run server\""
 	},
 	"repository": {
 		"type": "git",
@@ -70,6 +71,7 @@
 		"postcss-loader": "^7.2.4",
 		"randomstring": "^1.2.3",
 		"react": "^18.2.0",
+		"react-animated-bg": "^1.2.2",
 		"react-dom": "^18.2.0",
 		"react-router-dom": "^6.10.0",
 		"style-loader": "^3.3.2",

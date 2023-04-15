@@ -10,8 +10,8 @@ import {
 import UserContext from './UserContext';
 
 // COMPONENTS
-import MainContainer, { userLoader } from './containers/MainContainer';
-import Login, { userLoggedIn } from './components/LoginPage/Login';
+import MainContainer, {userLoader} from './containers/MainContainer';
+import Login, {userLoggedIn} from './components/LoginPage/Login';
 
 
 import LogVibeContainer from './containers/LogVibeContainer';
@@ -21,8 +21,7 @@ import LogVibeContainer from './containers/LogVibeContainer';
 const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route path="/">
-			{/* index? */}
-			<Route index element={<Login />} loader={userLoggedIn} /> 
+			<Route index element={<Login />} loader={userLoggedIn}/>
 			<Route path="/home" element={<MainContainer />} loader={userLoader} />
 			<Route path="/log" element={<LogVibeContainer />} loader={userLoader} />
 		</Route>
