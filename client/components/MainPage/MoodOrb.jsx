@@ -35,7 +35,7 @@ function MoodOrb() {
 			className="orb font-bold text-white flex justify-center items-center text-2xl"
 			bg={colors[index]}
 		>
-			{colors.length ? '' : 'No vibe available for this date'}
+			{colors.length ? '' : 'A quiet day, no vibez to show'}
 		</Orb>
 	);
 }
