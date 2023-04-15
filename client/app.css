@@ -2,11 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-
+/* Added box-sizing styling to include padding and width to the sizing of elements  - Cristian*/
 *{
     background-color: teal;
     box-sizing: border-box;
 }
+
 .mainContainer{
     margin-top: 20px;
 }
@@ -93,13 +94,4 @@
     border-radius: 20px;
     transform: rotate(-0.48deg);
 }
-    .arrow {
-        border: solid white;
-        border-width: 0 3px 3px 0;
-        display: inline-block;
-        padding: 50px;
-      }
-      .left {
-        transform: rotate(135deg);
-        -webkit-transform: rotate(135deg);
-      }
+
